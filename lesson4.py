@@ -1,4 +1,16 @@
-my_list = [1, 777, 13, 21, 12, 9, 19, 21, 4, 72, 72, 74, 93, 93, 69, 12]
-print(f"Исходные элементы списка: {my_list} ")
-new_list = [el for el in my_list if my_list.count(el) == 1]
-print(f"Элементы списка, не имеющие повторений: {new_list}")
+def File_work():
+    num = {'One': 'Один', 'Two': 'Два', 'Three': 'Три', 'Four': 'Четыре'}
+    new_text = []
+    try:
+        with open('File_work.txt', 'r+', encoding="utf-8") as file:
+            with open('new_file.txt', 'r+', encoding="utf-8") as new_file:
+                l = file.readlines()
+                for el in l:
+                    el = el.split(' ', 1)
+                    new_text.append(num[el[0]] + ' ' + el[1])
+                new_file.writelines(new_text)
+    except FileNotFoundError:
+        return 'Файл не найден.'
+
+
+File_work()

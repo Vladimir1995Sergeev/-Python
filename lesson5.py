@@ -1,4 +1,13 @@
-from functools import reduce
-my_list = [el for el in range(100, 1001, 2)]
-print("Список чётных чисел в диапазоне [100..1000]:\n", my_list)
-print("Произведение всех элементов списка:\n", reduce(lambda x, y: x*y, my_list))
+def summary():
+    try:
+        with open('file_3.txt', 'w+') as file_obj:
+            line = input('Введите цифры через пробел \n')
+            file_obj.writelines(line)
+            my_numb = line.split()
+
+            print(sum(map(int, my_numb)))
+    except IOError:
+        print('Ошибка в файле')
+    except ValueError:
+        print('Неправильно набран номер. Ошибка ввода-вывода')
+summary()

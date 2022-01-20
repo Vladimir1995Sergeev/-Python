@@ -1,8 +1,12 @@
-def simple_calc():
-    a = float(input("work_in_hours : "))
-    b = float(input("rate_per_hour : "))
-    c = float(input("prize : "))
-    pay = a * b
-    return pay + c
+my_list = []
+while True:
+    line = input("Введите любые данные: ")
+    if line == '':
+        print(my_list)
+        exit()
+    else:
+        newline = line + '\n'
+        my_list.append(newline)
 
-print(f"Wages are paid : {simple_calc()}" )
+    with open("File_1.txt", "w") as file_obj:
+        file_obj.writelines(my_list)
