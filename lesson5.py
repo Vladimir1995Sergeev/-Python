@@ -1,4 +1,29 @@
-from functools import reduce
-my_list = [el for el in range(100, 1001, 2)]
-print("Список чётных чисел в диапазоне [100..1000]:\n", my_list)
-print("Произведение всех элементов списка:\n", reduce(lambda x, y: x*y, my_list))
+class Stationery:
+    def __init__(self, title):
+        self.title = title
+
+    def draw(self):
+        return f'Запуск отрисовки'
+
+
+class Pen(Stationery):
+    def draw(self):
+        return f'Запуск отрисовки {self.title}'
+
+
+class Pencil(Stationery):
+    def draw(self):
+        return f'Запуск отрисовки {self.title}'
+
+
+class Handle(Stationery):
+    def draw(self):
+        return f'Запуск отрисовки {self.title}'
+
+
+pen = Pen('ручкой')
+print(pen.draw())
+pencil = Pencil('карандашем')
+print(pencil.draw())
+handle = Handle('маркером')
+print(handle.draw())
