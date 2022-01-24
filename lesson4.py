@@ -1,4 +1,53 @@
-my_list = [1, 777, 13, 21, 12, 9, 19, 21, 4, 72, 72, 74, 93, 93, 69, 12]
-print(f"Исходные элементы списка: {my_list} ")
-new_list = [el for el in my_list if my_list.count(el) == 1]
-print(f"Элементы списка, не имеющие повторений: {new_list}")
+class Car:
+
+    def __init__(self, name, speed, color, is_police=False):
+        self.name = name
+        self.speed = speed
+        self.color = color
+        self.is_police = is_police
+
+    def go(self):
+        return f'The {self.name} went.'
+
+    def stop(self):
+        return f'\nThe {self.name} has stopped.'
+
+    def turn(self, direction):
+        return f'\nThe {self.name} turned {direction}'
+
+    def show_speed(self):
+        return f'\nYour speed is {self.speed}'
+
+
+class TownCar(Car):
+    def show_speed(self):
+        if self.speed > 60:
+            return f'\nYour speed is higher than allow! Your speed is {self.speed}'
+        else:
+            return f'Speed of {self.name} is normal'
+
+
+class SportCar(Car):
+    pass
+
+
+class WorkCar(Car):
+    def show_speed(self):
+        if self.speed > 40:
+            return f'\nYour speed is higher than allow! Your speed is {self.speed}'
+        else:
+            return f'Speed of {self.name} is normal'
+
+
+class PoliceCar(Car):
+    pass
+
+
+town = TownCar('Smart', 85, 'blue', False)
+print('1:\n' + town.go(), town.show_speed(), town.turn('left'), town.turn('right'), town.stop())
+
+sport = SportCar('MercedesAMG', 200, 'red', False)
+print('2:\n' + sport.go(), sport.show_speed(), sport.turn('left'), sport.stop())
+
+work = WorkCar('Volkswagen', 45, 'black', False)
+print('3:\n' + work.go(), work.show_speed(), work.turn('right'), work.stop())
