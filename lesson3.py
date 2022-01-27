@@ -1,4 +1,32 @@
-numbers = range(20, 241)
-new_list = [el for el in numbers if el % 20 == 0 or el % 21 == 0]
+class Cell:
+    def __init__(self, quantity):
+        self.quantity = int(quantity)
 
-print(f"Список чисел в диапазоне (20..240) кратные 20 или 21: ", new_list)
+    def __add__(self, other):
+        return f'Размер клетки равен: {self.quantity + other.quantity}'
+
+    def __sub__(self, other):
+        sub = self.quantity - other.quantity
+        return f'Клетка стала меньше, теперь она равна: {sub} клеткам' if sub > 0 else 'Клетка исчезла :('
+
+    def __truediv__(self, other):
+        return self.quantity // other.quantity
+
+    def __mul__(self, other):
+        return self.quantity * other.quantity
+
+    def make_order(self, row):
+        result = ''
+        for i in range(int(self.quantity / row)):
+            result += '*' * row + '\n'
+        result += '*' * (self.quantity % row) + '\n'
+        return result
+
+
+cell = Cell(24)
+cell_2 = Cell(2)
+print(cell + cell_2)
+print(cell - cell_2)
+print(cell / cell_2)
+print(cell * cell_2)
+print(cell.make_order(7))
